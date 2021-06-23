@@ -1,5 +1,21 @@
 # Release History
 
+## 4.3.0-beta.1 (Unreleased)
+
+### Features Added
+
+### Breaking Changes
+
+### Key Bugs Fixed
+
+### Fixed
+
+## 4.2.1 (2021-06-15)
+
+### Bug Fixes
+
+- Fixed an issue where bundling could fail when importing this library due to an incorrectly set import.
+
 ## 4.2.0 (2021-06-15)
 
 ### New Features
@@ -44,7 +60,7 @@
 
 ## 4.2.0-beta.3 (2021-02-09)
 
-- [Breaking] Removed `dist-browser` from the published package. To bundle the Azure SDK libraries for the browsers, please read our bundling guide: [link](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
+- [Breaking] Removed `dist-browser` from the published package. To bundle the Azure SDK libraries for the browsers, please read our bundling guide: [link](https://github.com/Azure/azure-sdk-for-js/blob/main/documentation/Bundling.md).
 - Updated the Key Vault Keys Long Running Operation Pollers to follow a more compact and meaningful approach moving forward.
 - Bug fix: The logging of HTTP requests wasn't properly working - now it has been fixed and tests have been written that verify the fix.
 - Added a constructor overload to `CryptographyClient` that takes a `JsonWebKey` and allows for local-only subset of operations.
