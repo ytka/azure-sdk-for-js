@@ -4,13 +4,13 @@
 import * as url from "url";
 import { DefaultHttpClient, WebResource, WebResourceLike } from "@azure/core-http";
 
-export class RecordingHttpClient extends DefaultHttpClient {
-  private static s_recordingServerUri = "http://localhost:5000";
-  private static s_startPlaybackUri = RecordingHttpClient.s_recordingServerUri + "/playback/start";
-  private static s_stopPlaybackUri = RecordingHttpClient.s_recordingServerUri + "/playback/stop";
-  private static s_startRecordUri = RecordingHttpClient.s_recordingServerUri + "/record/start";
-  private static s_stopRecordUri = RecordingHttpClient.s_recordingServerUri + "/record/stop";
+const recordingServerUri = "http://localhost:5000";
+const startPlaybackUri = recordingServerUri + "/playback/start";
+const stopPlaybackUri = recordingServerUri + "/playback/stop";
+const startRecordUri = recordingServerUri + "/record/start";
+const stopRecordUri = recordingServerUri + "/record/stop";
 
+export class RecordingHttpClient extends DefaultHttpClient {
   private _httpClient: DefaultHttpClient;
   private _recordingId?: string;
   private _sessionFile: string;
@@ -21,12 +21,8 @@ export class RecordingHttpClient extends DefaultHttpClient {
   constructor(sessionFile: string, playback: boolean) {
     super();
     this._sessionFile = sessionFile;
-    this._startUri = playback
-      ? RecordingHttpClient.s_startPlaybackUri
-      : RecordingHttpClient.s_startRecordUri;
-    this._stopUri = playback
-      ? RecordingHttpClient.s_stopPlaybackUri
-      : RecordingHttpClient.s_stopRecordUri;
+    this._startUri = playback ? startPlaybackUri : startRecordUri;
+    this._stopUri = playback ? stopPlaybackUri : stopRecordUri;
     this._mode = playback ? "playback" : "record";
     this._httpClient = new DefaultHttpClient();
   }
@@ -69,6 +65,10 @@ export class RecordingHttpClient extends DefaultHttpClient {
       const req = this._createRecordingRequest(this._stopUri);
       req.headers.set("x-recording-save", "true");
       await this._httpClient.sendRequest(req);
+    } else {
+      throw new Error(
+        "Unexpected recorder.stop() call, make sure you start the recorder before stopping."
+      );
     }
   }
 

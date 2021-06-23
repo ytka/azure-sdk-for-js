@@ -16,7 +16,7 @@ describe("Tests", () => {
       options.httpClient = recorder;
     }
 
-    const connString = env.STORAGE_CONNECTION_STRING || "";
+    const connString = env.STORAGE_CONNECTION_STRING ?? "";
     console.log(connString);
     const client = BlobServiceClient.fromConnectionString(connString, options);
 
