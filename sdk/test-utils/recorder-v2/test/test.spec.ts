@@ -5,7 +5,7 @@ import { config } from "dotenv";
 config();
 
 describe("Tests", () => {
-  it.only("storage test", async function() {
+  it("storage test", async function() {
     const file = `file_path.json`;
     // env.TEST_MODE = "record";
     env.TEST_MODE = "playback";

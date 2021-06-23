@@ -2,23 +2,9 @@
   "extends": "../../../tsconfig.package",
   "compilerOptions": {
     "declarationDir": "./types",
-    "target": "es5",
+    "target": "ES2017",
     "outDir": "./dist-esm",
-    "lib": [
-      "dom",
-      "es5",
-      "es6",
-      "es7",
-      "esnext"
-    ]
+    "lib": ["dom", "es2017"]
   },
-  "exclude": [
-    "node_modules",
-    "./types/**/*.d.ts",
-    "./samples/**/*.ts"
-  ],
-  "include": [
-    "./src/**/*.ts",
-    "./test/**/*.ts"
-  ]
+  "include": ["./src/**/*.ts", "./test/**/*.ts"]
 }
