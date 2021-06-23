@@ -4,7 +4,7 @@
     "declarationDir": "./types",
     "target": "ES2017",
     "outDir": "./dist-esm",
-    "lib": ["dom", "es2017"]
+    "lib": ["dom", "esnext"]
   },
   "include": ["./src/**/*.ts", "./test/**/*.ts"]
 }
